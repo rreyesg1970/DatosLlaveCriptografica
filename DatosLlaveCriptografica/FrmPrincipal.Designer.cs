@@ -189,6 +189,7 @@
             this.Controls.Add(this.BtnObtenerInfo);
             this.Controls.Add(this.BtnSeleccionarArchivo);
             this.Controls.Add(this.TxtPath);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Obtener info llave criptográfica";

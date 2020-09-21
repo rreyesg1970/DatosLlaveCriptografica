@@ -56,6 +56,14 @@ namespace DatosLlaveCriptografica
             ObtenerInfo();
         }
 
+        private void TxtPin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                ObtenerInfo();
+            }
+        }
+
         private void BtnObtenerInfo_KeyDown(object sender, KeyEventArgs e)
         {
             ObtenerInfo();
@@ -272,5 +280,7 @@ namespace DatosLlaveCriptografica
             FrmAcercaDe frmAcercaDe = new FrmAcercaDe();
             frmAcercaDe.ShowDialog();
         }
+
+        
     }
 }

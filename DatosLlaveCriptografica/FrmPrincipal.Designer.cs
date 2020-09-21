@@ -110,6 +110,7 @@
             this.TxtPin.Name = "TxtPin";
             this.TxtPin.Size = new System.Drawing.Size(60, 20);
             this.TxtPin.TabIndex = 6;
+            this.TxtPin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtPin_KeyDown);
             // 
             // label1
             // 
@@ -189,6 +190,7 @@
             this.Controls.Add(this.BtnSeleccionarArchivo);
             this.Controls.Add(this.TxtPath);
             this.Name = "FrmPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Obtener info llave criptográfica";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PicProcesando)).EndInit();

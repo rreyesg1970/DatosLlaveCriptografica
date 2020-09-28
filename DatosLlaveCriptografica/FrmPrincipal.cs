@@ -64,6 +64,41 @@ namespace DatosLlaveCriptografica
             }
         }
 
+        private void TxtPath_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.All;
+        }
+
+        private void TxtPath_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] archivos = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+
+            //string linea = "";
+
+            TxtPath.Text = archivos[0];
+            rutayArchivo = TxtPath.Text;
+            FileInfo archivoP12 = new FileInfo(rutayArchivo);
+            certificadoP12 = archivoP12.Name;
+        }
+
+        private void TxtInfoLlaveCriptografica_DragDrop(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.All;
+        }
+
+        private void TxtInfoLlaveCriptografica_DragEnter(object sender, DragEventArgs e)
+        {
+            string[] archivos = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+
+            //string linea = "";
+
+            TxtPath.Text = archivos[0];
+            rutayArchivo = TxtPath.Text;
+            FileInfo archivoP12 = new FileInfo(rutayArchivo);
+            certificadoP12 = archivoP12.Name;
+            LblDragAndDrop.Visible = false;
+        }
+
         private void BtnLimpiarPantalla_Click(object sender, EventArgs e)
         {
             LimpiarDatos();
@@ -77,7 +112,7 @@ namespace DatosLlaveCriptografica
         #endregion Eventos
 
 
-        #region Metodos
+        #region Métodos
         private void ObtenerInfo()
         {
             if (certificadoP12 == null)
@@ -93,6 +128,7 @@ namespace DatosLlaveCriptografica
             string certTemp = certificadoP12;
             if (!certTemp.EndsWith(".p12"))
             {
+                MessageBox.Show("El archivo seleccionado no es una llave criptográfica", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -108,6 +144,10 @@ namespace DatosLlaveCriptografica
                 {
                     MessageBox.Show("El PIN ingresado es incorrecto", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Debe ingresar un PIN numérico de 4 digitos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -202,12 +242,12 @@ namespace DatosLlaveCriptografica
         //}
         #endregion
 
-        // Metodo Asyncronico que no bloquea la GUI y que devuelve un valor(string)
+        // Metodo Asyncrónico que no bloquea la GUI y que devuelve un valor(string)
         private async Task<string> ObtenerPIN()
         {
             return await Task<string>.Run(() =>
             {
-                for (int i = 7500; i < 8499; i++)
+                for (int i = 1; i < 9999; i++)
                 {
                     pinBuscado = i.ToString();
                     try
@@ -244,13 +284,14 @@ namespace DatosLlaveCriptografica
             TxtPath.Clear();
             TxtPin.Clear();
             TxtInfoLlaveCriptografica.Clear();
+            LblDragAndDrop.Visible = true;
         }
 
         private async Task<string> ObtenerPIN2()
         {
             return await Task<string>.Run(() =>
             {
-                for (int i = 8500; i < 9499; i++)
+                for (int i = 5000; i < 9999; i++)
                 {
                     pinBuscado = i.ToString();
                     try
@@ -354,5 +395,7 @@ namespace DatosLlaveCriptografica
                 // MessageBox.Show("No se encontró el PIN para este certificado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+
     }
 }

@@ -60,6 +60,7 @@ namespace DatosLlaveCriptografica
         {
             if (e.KeyCode == Keys.Enter)
             {
+                // ValidarTextBox.SoloNumeros(e);
                 ObtenerInfo();
             }
         }

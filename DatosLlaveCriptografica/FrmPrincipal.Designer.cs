@@ -151,7 +151,7 @@
             // PicProcesando
             // 
             this.PicProcesando.Image = ((System.Drawing.Image)(resources.GetObject("PicProcesando.Image")));
-            this.PicProcesando.Location = new System.Drawing.Point(127, 65);
+            this.PicProcesando.Location = new System.Drawing.Point(130, 63);
             this.PicProcesando.Name = "PicProcesando";
             this.PicProcesando.Size = new System.Drawing.Size(168, 151);
             this.PicProcesando.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -171,7 +171,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 304);
+            this.label3.Location = new System.Drawing.Point(13, 304);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(164, 13);
             this.label3.TabIndex = 12;

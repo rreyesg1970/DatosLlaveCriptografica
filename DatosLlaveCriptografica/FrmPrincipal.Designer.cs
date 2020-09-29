@@ -114,6 +114,7 @@
             this.TxtPin.Size = new System.Drawing.Size(60, 20);
             this.TxtPin.TabIndex = 6;
             this.TxtPin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtPin_KeyDown);
+            this.TxtPin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPin_KeyPress);
             // 
             // label1
             // 
@@ -151,7 +152,7 @@
             // PicProcesando
             // 
             this.PicProcesando.Image = ((System.Drawing.Image)(resources.GetObject("PicProcesando.Image")));
-            this.PicProcesando.Location = new System.Drawing.Point(130, 63);
+            this.PicProcesando.Location = new System.Drawing.Point(130, 64);
             this.PicProcesando.Name = "PicProcesando";
             this.PicProcesando.Size = new System.Drawing.Size(168, 151);
             this.PicProcesando.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -192,9 +193,11 @@
             // 
             this.LblDragAndDrop.AutoSize = true;
             this.LblDragAndDrop.BackColor = System.Drawing.Color.White;
-            this.LblDragAndDrop.Location = new System.Drawing.Point(64, 132);
+            this.LblDragAndDrop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblDragAndDrop.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.LblDragAndDrop.Location = new System.Drawing.Point(28, 130);
             this.LblDragAndDrop.Name = "LblDragAndDrop";
-            this.LblDragAndDrop.Size = new System.Drawing.Size(286, 13);
+            this.LblDragAndDrop.Size = new System.Drawing.Size(382, 15);
             this.LblDragAndDrop.TabIndex = 14;
             this.LblDragAndDrop.Text = "Use el botón Seleccionar Archivo o arrastre el archivo aquí";
             // 
@@ -226,8 +229,8 @@
             this.Controls.Add(this.BtnAveriguarPIN);
             this.Controls.Add(this.BtnSeleccionarArchivo);
             this.Controls.Add(this.TxtPath);
-            this.Controls.Add(this.TxtInfoLlaveCriptografica);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.TxtInfoLlaveCriptografica);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

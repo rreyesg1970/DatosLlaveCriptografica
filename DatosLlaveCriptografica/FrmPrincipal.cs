@@ -60,9 +60,13 @@ namespace DatosLlaveCriptografica
         {
             if (e.KeyCode == Keys.Enter)
             {
-                // ValidarTextBox.SoloNumeros(e);
                 ObtenerInfo();
             }
+        }
+
+        private void TxtPin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidarTextBox.SoloNumeros(e);
         }
 
         private void TxtPath_DragEnter(object sender, DragEventArgs e)
@@ -111,7 +115,6 @@ namespace DatosLlaveCriptografica
             frmAcercaDe.ShowDialog();
         }
         #endregion Eventos
-
 
         #region Métodos
         private void ObtenerInfo()
@@ -397,6 +400,6 @@ namespace DatosLlaveCriptografica
             }
         }
 
-
+       
     }
 }

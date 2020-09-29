@@ -84,15 +84,14 @@ namespace DatosLlaveCriptografica
             FileInfo file = new FileInfo(rutayArchivo);
             certificadoP12 = file.Name;
 
-            // string certTemp = certificadoP12;
-            // if (!certTemp.EndsWith(".p12"))
-            if(file.Extension != ".p12")
+            if (file.Extension != ".p12")
             {
                 MessageBox.Show("El archivo seleccionado no es una llave criptográfica", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             LblDragAndDrop.Visible = false;
         }
+
 
         private void BtnLimpiarPantalla_Click(object sender, EventArgs e)
         {
@@ -148,28 +147,27 @@ namespace DatosLlaveCriptografica
         //private void BtnAveriguarPIN_Click(object sender, EventArgs e)
         private async void BtnAveriguarPIN_Click(object sender, EventArgs e)
         {
-            PicProcesando.Visible = true;
-            DateTime tiempoInicio = DateTime.Now;
+                PicProcesando.Visible = true;
+                DateTime tiempoInicio = DateTime.Now;
 
-            // ObtenerPIN();                    // Esta llamada se usa con el metodo sincronico ObtenerPin
-            pinBuscado = await ObtenerPIN();    // Esta llamada se usa con el metodo asincronico ObtenerPin
+                // ObtenerPIN();                    // Esta llamada se usa con el metodo sincronico ObtenerPin
+                pinBuscado = await ObtenerPIN();    // Esta llamada se usa con el metodo asincronico ObtenerPin
 
-            DateTime tiempoFin = DateTime.Now;
-            TimeSpan span = tiempoFin - tiempoInicio;
-            double segundosTranscurridos = (double)span.TotalMilliseconds / 1000;
-            LblPinConsultado.Text = segundosTranscurridos.ToString();
-            TxtPin.Text = pinBuscado;
+                DateTime tiempoFin = DateTime.Now;
+                TimeSpan span = tiempoFin - tiempoInicio;
+                double segundosTranscurridos = (double)span.TotalMilliseconds / 1000;
+                LblPinConsultado.Text = segundosTranscurridos.ToString();
+                TxtPin.Text = pinBuscado;
 
-            if (pinBuscado != string.Empty)
-            {
-                MostrarDatosCertificado();
-                PicProcesando.Visible = false;
-            }
-            else
-            {
-                PicProcesando.Visible = false;
-                // MessageBox.Show("No se encontró el PIN para este certificado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+                if (pinBuscado != string.Empty)
+                {
+                    MostrarDatosCertificado();
+                    PicProcesando.Visible = false;
+                }
+                else
+                {
+                    PicProcesando.Visible = false;
+                }
         }
 
         #region No usados
@@ -239,6 +237,9 @@ namespace DatosLlaveCriptografica
         // Metodo Asyncrónico que no bloquea la GUI y que devuelve un valor(string)
         private async Task<string> ObtenerPIN()
         {
+            //Task taskA = Task.Run(() =>
+            //{
+
             return await Task<string>.Run(() =>
             {
                 for (int i = 1; i < 9999; i++)
@@ -257,6 +258,7 @@ namespace DatosLlaveCriptografica
                 pinBuscado = string.Empty;
                 return pinBuscado;
             });
+
         }
 
         private void MostrarDatosCertificado()
@@ -279,6 +281,7 @@ namespace DatosLlaveCriptografica
             TxtPin.Clear();
             TxtInfoLlaveCriptografica.Clear();
             LblDragAndDrop.Visible = true;
+            LblPinConsultado.Text = "";
         }
 
         private async Task<string> ObtenerPIN2()
@@ -390,6 +393,6 @@ namespace DatosLlaveCriptografica
             }
         }
 
-       
+
     }
 }

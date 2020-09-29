@@ -46,6 +46,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.LblDragAndDrop = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PicProcesando)).BeginInit();
             this.SuspendLayout();
             // 
@@ -152,9 +153,9 @@
             // PicProcesando
             // 
             this.PicProcesando.Image = ((System.Drawing.Image)(resources.GetObject("PicProcesando.Image")));
-            this.PicProcesando.Location = new System.Drawing.Point(130, 64);
+            this.PicProcesando.Location = new System.Drawing.Point(141, 70);
             this.PicProcesando.Name = "PicProcesando";
-            this.PicProcesando.Size = new System.Drawing.Size(168, 151);
+            this.PicProcesando.Size = new System.Drawing.Size(152, 140);
             this.PicProcesando.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicProcesando.TabIndex = 10;
             this.PicProcesando.TabStop = false;
@@ -210,11 +211,21 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Ruta del archivo";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 381);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(254, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "EvoSoftCR - desarrollado por Roberto Reyes García";
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 379);
+            this.ClientSize = new System.Drawing.Size(437, 403);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.BtnObtenerInfo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.LblDragAndDrop);
@@ -263,6 +274,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label LblDragAndDrop;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 

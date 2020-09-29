@@ -34,7 +34,7 @@ namespace DatosLlaveCriptografica
         }
 
         #region Eventos
-        private void Form1_Load(object sender, EventArgs e)
+        private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             pinBuscado = string.Empty;
         }
@@ -48,6 +48,7 @@ namespace DatosLlaveCriptografica
                 ruta = rutayArchivo.Substring(0, rutayArchivo.LastIndexOf('\\'));
                 certificadoP12 = Ofd1.SafeFileName;
                 TxtPath.Text = rutayArchivo;
+                LblDragAndDrop.Visible = false;
             }
         }
 
@@ -69,23 +70,6 @@ namespace DatosLlaveCriptografica
             ValidarTextBox.SoloNumeros(e);
         }
 
-        private void TxtPath_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.All;
-        }
-
-        private void TxtPath_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] archivos = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-
-            //string linea = "";
-
-            TxtPath.Text = archivos[0];
-            rutayArchivo = TxtPath.Text;
-            FileInfo archivoP12 = new FileInfo(rutayArchivo);
-            certificadoP12 = archivoP12.Name;
-        }
-
         private void TxtInfoLlaveCriptografica_DragDrop(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.All;
@@ -95,12 +79,18 @@ namespace DatosLlaveCriptografica
         {
             string[] archivos = (string[])e.Data.GetData(DataFormats.FileDrop, false);
 
-            //string linea = "";
-
             TxtPath.Text = archivos[0];
             rutayArchivo = TxtPath.Text;
-            FileInfo archivoP12 = new FileInfo(rutayArchivo);
-            certificadoP12 = archivoP12.Name;
+            FileInfo file = new FileInfo(rutayArchivo);
+            certificadoP12 = file.Name;
+
+            // string certTemp = certificadoP12;
+            // if (!certTemp.EndsWith(".p12"))
+            if(file.Extension != ".p12")
+            {
+                MessageBox.Show("El archivo seleccionado no es una llave criptográfica", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             LblDragAndDrop.Visible = false;
         }
 

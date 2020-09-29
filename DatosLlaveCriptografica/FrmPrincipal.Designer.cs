@@ -68,7 +68,7 @@
             // 
             // BtnObtenerInfo
             // 
-            this.BtnObtenerInfo.Location = new System.Drawing.Point(286, 222);
+            this.BtnObtenerInfo.Location = new System.Drawing.Point(285, 227);
             this.BtnObtenerInfo.Name = "BtnObtenerInfo";
             this.BtnObtenerInfo.Size = new System.Drawing.Size(137, 23);
             this.BtnObtenerInfo.TabIndex = 2;
@@ -108,7 +108,7 @@
             // 
             // TxtPin
             // 
-            this.TxtPin.Location = new System.Drawing.Point(106, 224);
+            this.TxtPin.Location = new System.Drawing.Point(105, 229);
             this.TxtPin.MaxLength = 4;
             this.TxtPin.Name = "TxtPin";
             this.TxtPin.Size = new System.Drawing.Size(60, 20);
@@ -139,7 +139,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 227);
+            this.label2.Location = new System.Drawing.Point(11, 232);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 9;
@@ -237,7 +237,7 @@
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Obtener info llave criptográfica";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PicProcesando)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

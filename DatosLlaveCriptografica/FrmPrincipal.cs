@@ -147,27 +147,36 @@ namespace DatosLlaveCriptografica
         //private void BtnAveriguarPIN_Click(object sender, EventArgs e)
         private async void BtnAveriguarPIN_Click(object sender, EventArgs e)
         {
-                PicProcesando.Visible = true;
-                DateTime tiempoInicio = DateTime.Now;
+            PicProcesando.Visible = true;
+            DateTime tiempoInicio = DateTime.Now;
 
-                // ObtenerPIN();                    // Esta llamada se usa con el metodo sincronico ObtenerPin
-                pinBuscado = await ObtenerPIN();    // Esta llamada se usa con el metodo asincronico ObtenerPin
+            //var task1 = Task1ObtenerPIN();
+            //var task2 = Task2ObtenerPIN();
+            //await Task.WhenAll(task1, task2);
 
-                DateTime tiempoFin = DateTime.Now;
-                TimeSpan span = tiempoFin - tiempoInicio;
-                double segundosTranscurridos = (double)span.TotalMilliseconds / 1000;
-                LblPinConsultado.Text = segundosTranscurridos.ToString();
-                TxtPin.Text = pinBuscado;
+            // var resultado = await Task3ObtenerPIN();
+            // var resultado = await Task.WhenAll(Task4ObtenerPIN());
+           var resultado = await Task.WhenAll(Task3ObtenerPIN(), Task4ObtenerPIN());
 
-                if (pinBuscado != string.Empty)
-                {
-                    MostrarDatosCertificado();
-                    PicProcesando.Visible = false;
-                }
-                else
-                {
-                    PicProcesando.Visible = false;
-                }
+
+            // ObtenerPIN();                    // Esta llamada se usa con el metodo sincronico ObtenerPin
+            // pinBuscado = await ObtenerPIN();    // Esta llamada se usa con el metodo asincronico ObtenerPin
+
+            DateTime tiempoFin = DateTime.Now;
+            TimeSpan span = tiempoFin - tiempoInicio;
+            double segundosTranscurridos = (double)span.TotalMilliseconds / 1000;
+            LblPinConsultado.Text = segundosTranscurridos.ToString();
+            TxtPin.Text = pinBuscado;
+
+            if (pinBuscado != string.Empty)
+            {
+                MostrarDatosCertificado();
+                PicProcesando.Visible = false;
+            }
+            else
+            {
+                PicProcesando.Visible = false;
+            }
         }
 
         #region No usados
@@ -235,14 +244,12 @@ namespace DatosLlaveCriptografica
         #endregion
 
         // Metodo Asyncrónico que no bloquea la GUI y que devuelve un valor(string)
-        private async Task<string> ObtenerPIN()
+        private async Task<string> Task1ObtenerPIN()
         {
-            //Task taskA = Task.Run(() =>
-            //{
-
             return await Task<string>.Run(() =>
             {
-                for (int i = 1; i < 9999; i++)
+                // for (int i = 1; i < 9999; i++)
+                for (int i = 2000; i < 2500; i++)
                 {
                     pinBuscado = i.ToString();
                     try
@@ -258,7 +265,74 @@ namespace DatosLlaveCriptografica
                 pinBuscado = string.Empty;
                 return pinBuscado;
             });
+        }
 
+        private Task<string> Task2ObtenerPIN()
+        {
+            var t = Task<string>.Factory.StartNew(
+               () =>
+             {
+                 for (int i = 2400; i < 2500; i++)
+                 {
+                     pinBuscado = i.ToString();
+                     try
+                     {
+                         cert = new X509Certificate2(rutayArchivo, pinBuscado);
+                         if (cert != null)
+                         {
+                             return pinBuscado;
+                         }
+                     }
+                     catch (Exception) { }
+                 }
+                 pinBuscado = string.Empty;
+                 return pinBuscado;
+             });
+            return t;
+        }
+
+        private Task<string> Task3ObtenerPIN()
+        {
+            return Task<string>.Run(() =>
+            {
+                for (int i = 2400; i < 2500; i++)
+                {
+                    pinBuscado = i.ToString();
+                    try
+                    {
+                        cert = new X509Certificate2(rutayArchivo, pinBuscado);
+                        if (cert != null)
+                        {
+                            return pinBuscado;
+                        }
+                    }
+                    catch (Exception) { }
+                }
+                pinBuscado = string.Empty;
+                return pinBuscado;
+            });
+        }
+
+        private Task<string> Task4ObtenerPIN()
+        {
+            return Task<string>.Run(() =>
+            {
+                for (int i = 2300; i < 2500; i++)
+                {
+                    pinBuscado = i.ToString();
+                    try
+                    {
+                        cert = new X509Certificate2(rutayArchivo, pinBuscado);
+                        if (cert != null)
+                        {
+                            return pinBuscado;
+                        }
+                    }
+                    catch (Exception) { }
+                }
+                pinBuscado = string.Empty;
+                return pinBuscado;
+            });
         }
 
         private void MostrarDatosCertificado()
@@ -392,7 +466,6 @@ namespace DatosLlaveCriptografica
                 // MessageBox.Show("No se encontró el PIN para este certificado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
 
     }
 }

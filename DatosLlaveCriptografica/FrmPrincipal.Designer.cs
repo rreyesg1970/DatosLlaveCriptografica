@@ -59,52 +59,87 @@
             // 
             // BtnSeleccionarArchivo
             // 
+            this.BtnSeleccionarArchivo.BackColor = System.Drawing.Color.DodgerBlue;
+            this.BtnSeleccionarArchivo.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnSeleccionarArchivo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkOrange;
+            this.BtnSeleccionarArchivo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.BtnSeleccionarArchivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSeleccionarArchivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSeleccionarArchivo.ForeColor = System.Drawing.Color.White;
             this.BtnSeleccionarArchivo.Location = new System.Drawing.Point(283, 8);
             this.BtnSeleccionarArchivo.Name = "BtnSeleccionarArchivo";
             this.BtnSeleccionarArchivo.Size = new System.Drawing.Size(139, 23);
             this.BtnSeleccionarArchivo.TabIndex = 1;
             this.BtnSeleccionarArchivo.Text = "Seleccionar Archivo";
-            this.BtnSeleccionarArchivo.UseVisualStyleBackColor = true;
+            this.BtnSeleccionarArchivo.UseVisualStyleBackColor = false;
             this.BtnSeleccionarArchivo.Click += new System.EventHandler(this.BtnSeleccionarArchivo_Click);
             // 
             // BtnObtenerInfo
             // 
-            this.BtnObtenerInfo.Location = new System.Drawing.Point(285, 227);
+            this.BtnObtenerInfo.BackColor = System.Drawing.Color.DodgerBlue;
+            this.BtnObtenerInfo.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnObtenerInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkOrange;
+            this.BtnObtenerInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.BtnObtenerInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnObtenerInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnObtenerInfo.ForeColor = System.Drawing.Color.White;
+            this.BtnObtenerInfo.Location = new System.Drawing.Point(285, 229);
             this.BtnObtenerInfo.Name = "BtnObtenerInfo";
             this.BtnObtenerInfo.Size = new System.Drawing.Size(137, 23);
             this.BtnObtenerInfo.TabIndex = 2;
             this.BtnObtenerInfo.Text = "Obtener Info";
-            this.BtnObtenerInfo.UseVisualStyleBackColor = true;
+            this.BtnObtenerInfo.UseVisualStyleBackColor = false;
             this.BtnObtenerInfo.Click += new System.EventHandler(this.BtnObtenerInfo_Click);
             // 
             // BtnAveriguarPIN
             // 
+            this.BtnAveriguarPIN.BackColor = System.Drawing.Color.DodgerBlue;
+            this.BtnAveriguarPIN.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnAveriguarPIN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkOrange;
+            this.BtnAveriguarPIN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.BtnAveriguarPIN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAveriguarPIN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAveriguarPIN.ForeColor = System.Drawing.Color.White;
             this.BtnAveriguarPIN.Location = new System.Drawing.Point(286, 269);
             this.BtnAveriguarPIN.Name = "BtnAveriguarPIN";
             this.BtnAveriguarPIN.Size = new System.Drawing.Size(137, 23);
             this.BtnAveriguarPIN.TabIndex = 3;
             this.BtnAveriguarPIN.Text = "Averiguar PIN";
-            this.BtnAveriguarPIN.UseVisualStyleBackColor = true;
+            this.BtnAveriguarPIN.UseVisualStyleBackColor = false;
             this.BtnAveriguarPIN.Click += new System.EventHandler(this.BtnAveriguarPIN_Click);
             // 
             // BtnLimpiarPantalla
             // 
+            this.BtnLimpiarPantalla.BackColor = System.Drawing.Color.DodgerBlue;
+            this.BtnLimpiarPantalla.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnLimpiarPantalla.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkOrange;
+            this.BtnLimpiarPantalla.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.BtnLimpiarPantalla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnLimpiarPantalla.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnLimpiarPantalla.ForeColor = System.Drawing.Color.White;
             this.BtnLimpiarPantalla.Location = new System.Drawing.Point(16, 335);
             this.BtnLimpiarPantalla.Name = "BtnLimpiarPantalla";
             this.BtnLimpiarPantalla.Size = new System.Drawing.Size(136, 23);
             this.BtnLimpiarPantalla.TabIndex = 4;
             this.BtnLimpiarPantalla.Text = "Limpiar";
-            this.BtnLimpiarPantalla.UseVisualStyleBackColor = true;
+            this.BtnLimpiarPantalla.UseVisualStyleBackColor = false;
             this.BtnLimpiarPantalla.Click += new System.EventHandler(this.BtnLimpiarPantalla_Click);
             // 
             // BtnAcercaDe
             // 
+            this.BtnAcercaDe.BackColor = System.Drawing.Color.DodgerBlue;
+            this.BtnAcercaDe.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnAcercaDe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkOrange;
+            this.BtnAcercaDe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.BtnAcercaDe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAcercaDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAcercaDe.ForeColor = System.Drawing.Color.White;
             this.BtnAcercaDe.Location = new System.Drawing.Point(286, 335);
             this.BtnAcercaDe.Name = "BtnAcercaDe";
             this.BtnAcercaDe.Size = new System.Drawing.Size(136, 23);
             this.BtnAcercaDe.TabIndex = 5;
             this.BtnAcercaDe.Text = "Acerca De";
-            this.BtnAcercaDe.UseVisualStyleBackColor = true;
+            this.BtnAcercaDe.UseVisualStyleBackColor = false;
             this.BtnAcercaDe.Click += new System.EventHandler(this.BtnAcercaDe_Click);
             // 
             // TxtPin
@@ -224,6 +259,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(437, 403);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.BtnObtenerInfo);
@@ -246,6 +282,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FrmPrincipal";
+            this.Opacity = 0.96D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Obtener info llave criptográfica";
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);

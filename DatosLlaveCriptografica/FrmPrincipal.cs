@@ -288,6 +288,9 @@ namespace DatosLlaveCriptografica
         // Metodo Asyncrónico que no bloquea la GUI y que devuelve un valor(string)
         private async Task<string> TaskAObtenerPIN()
         {
+            this.tokenCancel = new CancellationTokenSource();
+            var token = tokenCancel.Token;
+
             return await Task<string>.Run(() =>
             {
                 // for (int i = 1; i < 9999; i++)
@@ -303,6 +306,10 @@ namespace DatosLlaveCriptografica
                         }
                     }
                     catch (Exception) { }
+                    if (token.IsCancellationRequested)
+                    {
+                        break;
+                    }
                 }
                 //pinBuscado = string.Empty;
                 return pinBuscado;
@@ -311,6 +318,9 @@ namespace DatosLlaveCriptografica
 
         private Task<string> TaskBObtenerPIN()
         {
+            this.tokenCancel = new CancellationTokenSource();
+            var token = tokenCancel.Token;
+
             var t = Task<string>.Factory.StartNew(
                () =>
              {
@@ -326,6 +336,10 @@ namespace DatosLlaveCriptografica
                          }
                      }
                      catch (Exception) { }
+                     if (token.IsCancellationRequested)
+                     {
+                         break;
+                     }
                  }
                  pinBuscado = string.Empty;
                  return pinBuscado;
@@ -537,7 +551,7 @@ namespace DatosLlaveCriptografica
             } 
             else
             {
-                MessageBox.Show("Valores incorrectos para la búqueda", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Acción cancelada o valores nulos devueltos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void LimpiarDatos()

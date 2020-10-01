@@ -252,11 +252,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 444);
+            this.label5.Location = new System.Drawing.Point(28, 443);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(289, 13);
+            this.label5.Size = new System.Drawing.Size(230, 13);
             this.label5.TabIndex = 16;
-            this.label5.Text = "EvoSoftCR - Desarrollado por Roberto Reyes García - 2020";
+            this.label5.Text = " Desarrollado por Roberto Reyes García - 2020";
             // 
             // BtnCancelarBusqueda
             // 
@@ -326,7 +326,7 @@
             this.groupBox1.Controls.Add(this.BtnAveriguarPIN);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.LblPinConsultado);
-            this.groupBox1.Location = new System.Drawing.Point(13, 269);
+            this.groupBox1.Location = new System.Drawing.Point(12, 269);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(409, 118);
             this.groupBox1.TabIndex = 22;
@@ -338,7 +338,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(437, 457);
+            this.ClientSize = new System.Drawing.Size(438, 457);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.BtnObtenerInfo);
@@ -357,7 +357,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FrmPrincipal";
-            this.Opacity = 0.96D;
+            this.Opacity = 0.97D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Obtener info llave criptográfica";
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);

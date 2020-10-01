@@ -24,9 +24,12 @@ namespace DatosLlaveCriptografica
         string pinCertificado;
         string pinBuscado;
         string fechaCertificado;
-        bool certificadoEncontrado;
+        int valorInicial;
+        int valorFinal;
+       // bool certificadoEncontrado;
         StreamReader sr;
         X509Certificate2 cert;
+        CancellationTokenSource tokenCancel;
 
         public FrmPrincipal()
         {
@@ -37,6 +40,23 @@ namespace DatosLlaveCriptografica
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             pinBuscado = string.Empty;
+
+        }
+
+        private void TxtValorInicial_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                
+            }
+        }
+
+        private void TxtValorFinal_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                
+            }
         }
 
         private void BtnSeleccionarArchivo_Click(object sender, EventArgs e)
@@ -150,13 +170,35 @@ namespace DatosLlaveCriptografica
             PicProcesando.Visible = true;
             DateTime tiempoInicio = DateTime.Now;
 
+            if(!string.IsNullOrEmpty(TxtValorInicial.Text))
+            {
+                valorInicial = Int32.Parse(TxtValorInicial.Text);
+            }
+            else
+            {
+                valorInicial = 1;
+            }
+            
+            if(!string.IsNullOrEmpty(TxtValorFinal.Text))
+            {
+                valorFinal = Int32.Parse(TxtValorFinal.Text);
+            }
+            else
+            {
+                valorFinal = 9999;
+            }
+            
+
             //var task1 = Task1ObtenerPIN();
             //var task2 = Task2ObtenerPIN();
             //await Task.WhenAll(task1, task2);
 
             // var resultado = await Task3ObtenerPIN();
-            // var resultado = await Task.WhenAll(Task4ObtenerPIN());
-           var resultado = await Task.WhenAll(Task3ObtenerPIN(), Task4ObtenerPIN());
+             var resultado = await Task.WhenAll(TaskAObtenerPIN());
+            // var resultado = await Task.WhenAll(Task3ObtenerPIN(), Task4ObtenerPIN());
+
+            //var resultado = await Task.WhenAll(Task1ObtenerPIN(), Task2ObtenerPIN(), Task3ObtenerPIN(), Task4ObtenerPIN(), Task5ObtenerPIN());
+
 
 
             // ObtenerPIN();                    // Esta llamada se usa con el metodo sincronico ObtenerPin
@@ -244,12 +286,12 @@ namespace DatosLlaveCriptografica
         #endregion
 
         // Metodo Asyncrónico que no bloquea la GUI y que devuelve un valor(string)
-        private async Task<string> Task1ObtenerPIN()
+        private async Task<string> TaskAObtenerPIN()
         {
             return await Task<string>.Run(() =>
             {
                 // for (int i = 1; i < 9999; i++)
-                for (int i = 2000; i < 2500; i++)
+                for (int i = valorInicial; i < valorFinal; i++)
                 {
                     pinBuscado = i.ToString();
                     try
@@ -262,12 +304,12 @@ namespace DatosLlaveCriptografica
                     }
                     catch (Exception) { }
                 }
-                pinBuscado = string.Empty;
+                //pinBuscado = string.Empty;
                 return pinBuscado;
             });
         }
 
-        private Task<string> Task2ObtenerPIN()
+        private Task<string> TaskBObtenerPIN()
         {
             var t = Task<string>.Factory.StartNew(
                () =>
@@ -291,63 +333,212 @@ namespace DatosLlaveCriptografica
             return t;
         }
 
-        private Task<string> Task3ObtenerPIN()
+        private Task<string> Task1ObtenerPIN()
         {
+            this.tokenCancel = new CancellationTokenSource();
+            var token = tokenCancel.Token;
+
             return Task<string>.Run(() =>
             {
-                for (int i = 2400; i < 2500; i++)
+                // for (int i = 1000; i < 1020; i++)
+                for (int i = 1; i < 2000; i++)
                 {
-                    pinBuscado = i.ToString();
+                    var pinTask3 = i.ToString();
                     try
                     {
-                        cert = new X509Certificate2(rutayArchivo, pinBuscado);
+                        cert = new X509Certificate2(rutayArchivo, pinTask3);
                         if (cert != null)
                         {
+                            pinBuscado = pinTask3;
+                            tokenCancel.Cancel();
+                            if (token.IsCancellationRequested)
+                            {
+                                break;
+                            }
                             return pinBuscado;
                         }
                     }
                     catch (Exception) { }
+                    if (token.IsCancellationRequested)
+                    {
+                        break;
+                    }
                 }
-                pinBuscado = string.Empty;
+                // pinBuscado = string.Empty;
                 return pinBuscado;
             });
+        }
+
+        private Task<string> Task2ObtenerPIN()
+        {
+            this.tokenCancel = new CancellationTokenSource();
+            var token = tokenCancel.Token;
+
+            return Task<string>.Run(() =>
+            {
+                for (int i = 2001; i < 4000; i++)
+                //   for (int i = 1030; i < 1040; i++)
+                {
+                    var pinTask4 = i.ToString();
+                    try
+                    {
+                        cert = new X509Certificate2(rutayArchivo, pinTask4);
+                        if (cert != null)
+                        {
+                            pinBuscado = pinTask4;
+                            tokenCancel.Cancel();
+                            if (token.IsCancellationRequested)
+                            {
+                                break;
+                            }
+                            return pinBuscado;
+                        }
+                    }
+                    catch (Exception) { }
+                    if (token.IsCancellationRequested)
+                    {
+                        break;
+                    }
+                }
+               // pinBuscado = string.Empty;
+                return pinBuscado;
+            }, token);
+        }
+
+        private Task<string> Task3ObtenerPIN()
+        {
+            this.tokenCancel = new CancellationTokenSource();
+            var token = tokenCancel.Token;
+
+            return Task<string>.Run(() =>
+            {
+                for (int i = 4001; i < 6000; i++)
+                //   for (int i = 1030; i < 1040; i++)
+                {
+                    var pinTask4 = i.ToString();
+                    try
+                    {
+                        cert = new X509Certificate2(rutayArchivo, pinTask4);
+                        if (cert != null)
+                        {
+                            pinBuscado = pinTask4;
+                            tokenCancel.Cancel();
+                            if (token.IsCancellationRequested)
+                            {
+                                break;
+                            }
+                            return pinBuscado;
+                        }
+                    }
+                    catch (Exception) { }
+                    if (token.IsCancellationRequested)
+                    {
+                        break;
+                    }
+                }
+                // pinBuscado = string.Empty;
+                return pinBuscado;
+            }, token);
         }
 
         private Task<string> Task4ObtenerPIN()
         {
+            this.tokenCancel = new CancellationTokenSource();
+            var token = tokenCancel.Token;
+
             return Task<string>.Run(() =>
             {
-                for (int i = 2300; i < 2500; i++)
+                for (int i = 6001; i < 8000; i++)
+                //   for (int i = 1030; i < 1040; i++)
                 {
-                    pinBuscado = i.ToString();
+                    var pinTask4 = i.ToString();
                     try
                     {
-                        cert = new X509Certificate2(rutayArchivo, pinBuscado);
+                        cert = new X509Certificate2(rutayArchivo, pinTask4);
                         if (cert != null)
                         {
+                            pinBuscado = pinTask4;
+                            tokenCancel.Cancel();
+                            if (token.IsCancellationRequested)
+                            {
+                                break;
+                            }
                             return pinBuscado;
                         }
                     }
                     catch (Exception) { }
+                    if (token.IsCancellationRequested)
+                    {
+                        break;
+                    }
                 }
-                pinBuscado = string.Empty;
+                // pinBuscado = string.Empty;
                 return pinBuscado;
-            });
+            }, token);
+        }
+
+        private Task<string> Task5ObtenerPIN()
+        {
+            this.tokenCancel = new CancellationTokenSource();
+            var token = tokenCancel.Token;
+
+            return Task<string>.Run(() =>
+            {
+                for (int i = 8001; i < 9999; i++)
+                //   for (int i = 1030; i < 1040; i++)
+                {
+                    var pinTask4 = i.ToString();
+                    try
+                    {
+                        cert = new X509Certificate2(rutayArchivo, pinTask4);
+                        if (cert != null)
+                        {
+                            pinBuscado = pinTask4;
+                            tokenCancel.Cancel();
+                            if (token.IsCancellationRequested)
+                            {
+                                break;
+                            }
+                            return pinBuscado;
+                        }
+                    }
+                    catch (Exception) { }
+                    if (token.IsCancellationRequested)
+                    {
+                        break;
+                    }
+                }
+                // pinBuscado = string.Empty;
+                return pinBuscado;
+            }, token);
+        }
+
+       
+        private void BtnCancelarBusqueda_Click(object sender, EventArgs e)
+        {
+            this.tokenCancel.Cancel();
         }
 
         private void MostrarDatosCertificado()
         {
-            fechaCertificado = certificadoP12.Substring(0, 12);
-            fechaTemp = fechaCertificado;
+                fechaCertificado = certificadoP12.Substring(0, 12);
+                fechaTemp = fechaCertificado;
 
-            string certificadoVenta = cert.NotAfter.ToString("dd-MMMM-yyyy ,  HH:mm");
-            TxtInfoLlaveCriptografica.Text = $"Fecha de Vencimiento =   {certificadoVenta}";
-            TxtInfoLlaveCriptografica.AppendText("\r\n");
-            TxtInfoLlaveCriptografica.AppendText("\r\n");
-            TxtInfoLlaveCriptografica.AppendText(cert.IssuerName.Name.ToString());
-            TxtInfoLlaveCriptografica.AppendText("\r\n");
-            TxtInfoLlaveCriptografica.AppendText("\r\n");
-            TxtInfoLlaveCriptografica.AppendText(cert.Subject.ToString());
+            if(cert != null)
+            {
+                string certificadoVenta = cert.NotAfter.ToString("dd-MMMM-yyyy ,  HH:mm");
+                TxtInfoLlaveCriptografica.Text = $"Fecha de Vencimiento =   {certificadoVenta}";
+                TxtInfoLlaveCriptografica.AppendText("\r\n");
+                TxtInfoLlaveCriptografica.AppendText("\r\n");
+                TxtInfoLlaveCriptografica.AppendText(cert.IssuerName.Name.ToString());
+                TxtInfoLlaveCriptografica.AppendText("\r\n");
+                TxtInfoLlaveCriptografica.AppendText("\r\n");
+                TxtInfoLlaveCriptografica.AppendText(cert.Subject.ToString());
+            } 
+            else
+            {
+                MessageBox.Show("Valores incorrectos para la búqueda", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         private void LimpiarDatos()
         {
@@ -356,6 +547,8 @@ namespace DatosLlaveCriptografica
             TxtInfoLlaveCriptografica.Clear();
             LblDragAndDrop.Visible = true;
             LblPinConsultado.Text = "";
+            TxtValorInicial.Clear();
+            TxtValorFinal.Clear();
         }
 
         private async Task<string> ObtenerPIN2()
@@ -467,5 +660,16 @@ namespace DatosLlaveCriptografica
             }
         }
 
+        private void TxtValorInicial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidarTextBox.SoloNumeros(e);
+        }
+
+        private void TxtValorFinal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidarTextBox.SoloNumeros(e);
+        }
+
+       
     }
 }

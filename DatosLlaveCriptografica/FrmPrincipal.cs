@@ -26,7 +26,6 @@ namespace DatosLlaveCriptografica
         string fechaCertificado;
         int valorInicial;
         int valorFinal;
-       // bool certificadoEncontrado;
         StreamReader sr;
         X509Certificate2 cert;
         CancellationTokenSource tokenCancel;
@@ -40,23 +39,6 @@ namespace DatosLlaveCriptografica
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             pinBuscado = string.Empty;
-
-        }
-
-        private void TxtValorInicial_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                
-            }
-        }
-
-        private void TxtValorFinal_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                
-            }
         }
 
         private void BtnSeleccionarArchivo_Click(object sender, EventArgs e)
@@ -83,6 +65,16 @@ namespace DatosLlaveCriptografica
             {
                 ObtenerInfo();
             }
+        }
+
+        private void TxtValorInicial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidarTextBox.SoloNumeros(e);
+        }
+
+        private void TxtValorFinal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidarTextBox.SoloNumeros(e);
         }
 
         private void TxtPin_KeyPress(object sender, KeyPressEventArgs e)
@@ -167,6 +159,10 @@ namespace DatosLlaveCriptografica
         //private void BtnAveriguarPIN_Click(object sender, EventArgs e)
         private async void BtnAveriguarPIN_Click(object sender, EventArgs e)
         {
+            TxtInfoLlaveCriptografica.Clear();
+            TxtPin.Clear();
+            BtnObtenerInfo.Enabled = false;
+
             PicProcesando.Visible = true;
             DateTime tiempoInicio = DateTime.Now;
 
@@ -214,6 +210,7 @@ namespace DatosLlaveCriptografica
             {
                 MostrarDatosCertificado();
                 PicProcesando.Visible = false;
+                BtnObtenerInfo.Enabled = true;
             }
             else
             {
@@ -296,7 +293,7 @@ namespace DatosLlaveCriptografica
                 // for (int i = 1; i < 9999; i++)
                 for (int i = valorInicial; i < valorFinal; i++)
                 {
-                    pinBuscado = i.ToString();
+                    pinBuscado = i.ToString("0000");
                     try
                     {
                         cert = new X509Certificate2(rutayArchivo, pinBuscado);
@@ -673,17 +670,5 @@ namespace DatosLlaveCriptografica
                 // MessageBox.Show("No se encontró el PIN para este certificado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        private void TxtValorInicial_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ValidarTextBox.SoloNumeros(e);
-        }
-
-        private void TxtValorFinal_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ValidarTextBox.SoloNumeros(e);
-        }
-
-       
     }
 }

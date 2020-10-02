@@ -252,11 +252,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 443);
+            this.label5.Location = new System.Drawing.Point(24, 443);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(230, 13);
+            this.label5.Size = new System.Drawing.Size(265, 13);
             this.label5.TabIndex = 16;
-            this.label5.Text = " Desarrollado por Roberto Reyes García - 2020";
+            this.label5.Text = " Desarrollado por Roberto Reyes García - 02-Oct-2020";
             // 
             // BtnCancelarBusqueda
             // 
@@ -284,7 +284,6 @@
             this.TxtValorInicial.Size = new System.Drawing.Size(43, 20);
             this.TxtValorInicial.TabIndex = 18;
             this.TxtValorInicial.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtValorInicial.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtValorInicial_KeyDown);
             this.TxtValorInicial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtValorInicial_KeyPress);
             // 
             // TxtValorFinal
@@ -295,7 +294,6 @@
             this.TxtValorFinal.Size = new System.Drawing.Size(43, 20);
             this.TxtValorFinal.TabIndex = 19;
             this.TxtValorFinal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtValorFinal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtValorFinal_KeyDown);
             this.TxtValorFinal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtValorFinal_KeyPress);
             // 
             // label6

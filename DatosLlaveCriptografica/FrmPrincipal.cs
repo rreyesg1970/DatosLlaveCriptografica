@@ -189,8 +189,8 @@ namespace DatosLlaveCriptografica
             //var task2 = Task2ObtenerPIN();
             //await Task.WhenAll(task1, task2);
 
-            // var resultado = await Task3ObtenerPIN();
-             var resultado = await Task.WhenAll(TaskAObtenerPIN());
+            // var resultado = await TaskAObtenerPIN();
+            var resultado = await Task.WhenAll(TaskAObtenerPIN());
             // var resultado = await Task.WhenAll(Task3ObtenerPIN(), Task4ObtenerPIN());
 
             //var resultado = await Task.WhenAll(Task1ObtenerPIN(), Task2ObtenerPIN(), Task3ObtenerPIN(), Task4ObtenerPIN(), Task5ObtenerPIN());
@@ -203,7 +203,7 @@ namespace DatosLlaveCriptografica
             DateTime tiempoFin = DateTime.Now;
             TimeSpan span = tiempoFin - tiempoInicio;
             double segundosTranscurridos = (double)span.TotalMilliseconds / 1000;
-            LblPinConsultado.Text = segundosTranscurridos.ToString();
+            LblTiempoTranscurrido.Text = segundosTranscurridos.ToString();
             TxtPin.Text = pinBuscado;
 
             if (pinBuscado != string.Empty)
@@ -294,6 +294,7 @@ namespace DatosLlaveCriptografica
                 for (int i = valorInicial; i < valorFinal; i++)
                 {
                     pinBuscado = i.ToString("0000");
+                    // LblTiempoTranscurrido.Text = pinBuscado;
                     try
                     {
                         cert = new X509Certificate2(rutayArchivo, pinBuscado);
@@ -557,7 +558,7 @@ namespace DatosLlaveCriptografica
             TxtPin.Clear();
             TxtInfoLlaveCriptografica.Clear();
             LblDragAndDrop.Visible = true;
-            LblPinConsultado.Text = "";
+            LblTiempoTranscurrido.Text = "";
             TxtValorInicial.Clear();
             TxtValorFinal.Clear();
         }
@@ -656,7 +657,7 @@ namespace DatosLlaveCriptografica
             DateTime tiempoFin = DateTime.Now;
             TimeSpan span = tiempoFin - tiempoInicio;
             double segundosTranscurridos = (double)span.TotalMilliseconds / 1000;
-            LblPinConsultado.Text = segundosTranscurridos.ToString();
+            LblTiempoTranscurrido.Text = segundosTranscurridos.ToString();
             TxtPin.Text = pinBuscado;
 
             if (pinBuscado != string.Empty)

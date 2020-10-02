@@ -40,7 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Ofd1 = new System.Windows.Forms.OpenFileDialog();
             this.PicProcesando = new System.Windows.Forms.PictureBox();
-            this.LblPinConsultado = new System.Windows.Forms.Label();
+            this.LblTiempoTranscurrido = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.LblDragAndDrop = new System.Windows.Forms.Label();
@@ -199,14 +199,14 @@
             this.PicProcesando.TabStop = false;
             this.PicProcesando.Visible = false;
             // 
-            // LblPinConsultado
+            // LblTiempoTranscurrido
             // 
-            this.LblPinConsultado.AutoSize = true;
-            this.LblPinConsultado.Location = new System.Drawing.Point(203, 93);
-            this.LblPinConsultado.Name = "LblPinConsultado";
-            this.LblPinConsultado.Size = new System.Drawing.Size(13, 13);
-            this.LblPinConsultado.TabIndex = 11;
-            this.LblPinConsultado.Text = "?";
+            this.LblTiempoTranscurrido.AutoSize = true;
+            this.LblTiempoTranscurrido.Location = new System.Drawing.Point(203, 93);
+            this.LblTiempoTranscurrido.Name = "LblTiempoTranscurrido";
+            this.LblTiempoTranscurrido.Size = new System.Drawing.Size(13, 13);
+            this.LblTiempoTranscurrido.TabIndex = 11;
+            this.LblTiempoTranscurrido.Text = "?";
             // 
             // label3
             // 
@@ -323,7 +323,7 @@
             this.groupBox1.Controls.Add(this.TxtValorInicial);
             this.groupBox1.Controls.Add(this.BtnAveriguarPIN);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.LblPinConsultado);
+            this.groupBox1.Controls.Add(this.LblTiempoTranscurrido);
             this.groupBox1.Location = new System.Drawing.Point(12, 269);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(409, 118);
@@ -380,7 +380,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.OpenFileDialog Ofd1;
         private System.Windows.Forms.PictureBox PicProcesando;
-        private System.Windows.Forms.Label LblPinConsultado;
+        private System.Windows.Forms.Label LblTiempoTranscurrido;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label LblDragAndDrop;

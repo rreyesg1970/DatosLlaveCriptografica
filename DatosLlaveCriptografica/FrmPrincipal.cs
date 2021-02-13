@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Net.NetworkInformation;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -166,7 +159,7 @@ namespace DatosLlaveCriptografica
             PicProcesando.Visible = true;
             DateTime tiempoInicio = DateTime.Now;
 
-            if(!string.IsNullOrEmpty(TxtValorInicial.Text))
+            if (!string.IsNullOrEmpty(TxtValorInicial.Text))
             {
                 valorInicial = Int32.Parse(TxtValorInicial.Text);
             }
@@ -174,8 +167,8 @@ namespace DatosLlaveCriptografica
             {
                 valorInicial = 1;
             }
-            
-            if(!string.IsNullOrEmpty(TxtValorFinal.Text))
+
+            if (!string.IsNullOrEmpty(TxtValorFinal.Text))
             {
                 valorFinal = Int32.Parse(TxtValorFinal.Text);
             }
@@ -183,7 +176,7 @@ namespace DatosLlaveCriptografica
             {
                 valorFinal = 9999;
             }
-            
+
 
             //var task1 = Task1ObtenerPIN();
             //var task2 = Task2ObtenerPIN();
@@ -294,7 +287,6 @@ namespace DatosLlaveCriptografica
                 for (int i = valorInicial; i < valorFinal; i++)
                 {
                     pinBuscado = i.ToString("0000");
-                    // LblTiempoTranscurrido.Text = pinBuscado;
                     try
                     {
                         cert = new X509Certificate2(rutayArchivo, pinBuscado);
@@ -304,6 +296,7 @@ namespace DatosLlaveCriptografica
                         }
                     }
                     catch (Exception) { }
+
                     if (token.IsCancellationRequested)
                     {
                         break;
@@ -412,7 +405,7 @@ namespace DatosLlaveCriptografica
                         break;
                     }
                 }
-               // pinBuscado = string.Empty;
+                // pinBuscado = string.Empty;
                 return pinBuscado;
             }, token);
         }
@@ -525,7 +518,7 @@ namespace DatosLlaveCriptografica
             }, token);
         }
 
-       
+
         private void BtnCancelarBusqueda_Click(object sender, EventArgs e)
         {
             this.tokenCancel.Cancel();
@@ -533,10 +526,10 @@ namespace DatosLlaveCriptografica
 
         private void MostrarDatosCertificado()
         {
-                fechaCertificado = certificadoP12.Substring(0, 12);
-                fechaTemp = fechaCertificado;
+            fechaCertificado = certificadoP12.Substring(0, 12);
+            fechaTemp = fechaCertificado;
 
-            if(cert != null)
+            if (cert != null)
             {
                 string certificadoVenta = cert.NotAfter.ToString("dd-MMMM-yyyy ,  HH:mm");
                 TxtInfoLlaveCriptografica.Text = $"Fecha de Vencimiento =   {certificadoVenta}";
@@ -546,7 +539,7 @@ namespace DatosLlaveCriptografica
                 TxtInfoLlaveCriptografica.AppendText("\r\n");
                 TxtInfoLlaveCriptografica.AppendText("\r\n");
                 TxtInfoLlaveCriptografica.AppendText(cert.Subject.ToString());
-            } 
+            }
             else
             {
                 MessageBox.Show("Acción cancelada o valores nulos devueltos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
